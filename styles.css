@@ -302,7 +302,7 @@ section h2::after {
 }
 
 /* Services */
-/* .services {
+.services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
@@ -403,9 +403,9 @@ section h2::after {
 
 .service-card:hover .service-features li {
   color: var(--text-secondary);
-} */
+}
 
-.services {
+/* .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
@@ -453,7 +453,7 @@ section h2::after {
   }
   .service-title { font-size: 1em; }
   .service-icon { font-size: 1.7rem; }
-}
+} */
 
 /* Pricing */
 .pricing-cards {
