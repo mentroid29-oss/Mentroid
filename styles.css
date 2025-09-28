@@ -898,4 +898,8 @@ footer p:first-child {
   .contact-wrapper {
     grid-template-columns: 1fr;
   }
+
+}
+* {
+  box-sizing: border-box;
 }
