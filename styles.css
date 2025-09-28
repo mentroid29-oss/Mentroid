@@ -903,3 +903,15 @@ footer p:first-child {
 * {
   box-sizing: border-box;
 }
+
+.email-link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+  cursor: pointer;
+}
+.email-link:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
