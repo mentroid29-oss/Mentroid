@@ -302,7 +302,7 @@ section h2::after {
 }
 
 /* Services */
-.services {
+/* .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
@@ -403,6 +403,56 @@ section h2::after {
 
 .service-card:hover .service-features li {
   color: var(--text-secondary);
+} */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.service-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 18px 12px;
+  text-align: center;
+  font-size: 0.95rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.service-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+}
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+.service-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 7px 0 0 0;
+  font-size: 0.9em;
+}
+.service-features li {
+  margin-bottom: 4px;
+}
+@media (max-width: 600px) {
+  .services {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .service-card {
+    padding: 18px 6px;
+    font-size: 0.91rem;
+  }
+  .service-title { font-size: 1em; }
+  .service-icon { font-size: 1.7rem; }
 }
 
 /* Pricing */
@@ -914,4 +964,5 @@ footer p:first-child {
   color: #007bff;
   text-decoration: underline;
 }
+
 
