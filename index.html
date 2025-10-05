@@ -27,10 +27,10 @@
         <a href="#contact">Contact</a>
       </div>
 
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <!-- <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
         <span id="theme-text">Dark</span>
-      </button>
+      </button> -->
     </nav>
   </header>
 
@@ -112,7 +112,16 @@
             <li>Remote monitoring & alerts</li>
           </ul>
         </div>
-
+        <div class="service-card">
+          <div class="service-icon">📸</div>
+          <div class="service-title">Photo/Video Editing Solutions</div>
+          <ul class="service-features">
+            <li>Professional photo retouching & enhancement</li>
+            <li>Video cutting, effects & color grading</li>
+            <li>Automated batch processing & AI tools</li>
+            <li>High-res export & format optimization</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -145,133 +154,58 @@
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" style="padding:3rem 1rem; max-width: 1200px; margin: 0 auto;">
-      <h2 style="text-align:center; margin-bottom:2.5rem; font-weight: 700; font-size:2rem; color:#4b278f;">
-        Service Packages
-      </h2>
+    <section id="pricing" class="pricing-section">
+      <h2 class="pricing-title">Service Packages</h2>
+      <p class="pricing-subtitle">Choose the perfect plan for your needs</p>
 
-      <div style="
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 2rem; 
-    justify-items: center;
-  ">
-
+      <div class="pricing-cards">
         <!-- Consultation Card -->
-        <div style="
-      background: #f7f9fc; 
-      padding: 3rem 2rem; 
-      border-radius: 22px; 
-      box-shadow: 0 8px 14px rgba(0,0,0,0.05); 
-      width: 100%; 
-      max-width: 350px; 
-      text-align: center; 
-      border: 1px solid transparent; 
-      transition: transform 0.3s ease, border-color 0.3s ease;">
-          <div style="font-weight: 700; font-size: 1.35rem; color: #4b278f; margin-bottom: 1rem;">
-            Consultation
+
+        <div class="pricing-card">
+          <div class="card-content">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </div>
+            <h3 class="card-title">Consultation</h3>
+            <div class="card-price">₹299</div>
+            <p class="card-description">One-time strategy session for your AI/ML needs</p>
           </div>
-          <div style="font-weight: 800; font-size: 2.4rem; color: #38aafc; margin-bottom: 1rem;">
-            ₹299
-          </div>
-          <div style="font-size: 1rem; color: #666; margin-bottom: 2rem; line-height: 1.5;">
-            One-time strategy session for your AI/ML needs
-          </div>
-          <button style="
-  background-color: #4b278f; 
-  color: white; 
-  border: none; 
-  padding: 0.9rem 2.5rem; 
-  border-radius: 50px; 
-  font-weight: 600; 
-  cursor: pointer; 
-  box-shadow: 0 4px 14px rgba(56, 170, 252, 0.4); 
-  transition: background-color 0.3s ease;" onclick="handleBooking('Consultation')">
-            Consultation
+
+          <button class="card-button" onclick="handleBooking('Consultation')">
+            Book Consultation
           </button>
         </div>
 
-        <!-- Training Program Card -->
-        <div style="
-      background: #f7f9fc; 
-      padding: 3rem 2rem; 
-      border-radius: 22px; 
-      box-shadow: 0 8px 14px rgba(0,0,0,0.05); 
-      width: 100%; 
-      max-width: 350px; 
-      text-align: center; 
-      border: 1.8px solid #38aafc; 
-      position: relative; 
-      transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="
-        position: absolute; 
-        top: -14px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        background: #ffde59; 
-        color: #444; 
-        padding: 6px 20px; 
-        border-radius: 20px; 
-        font-weight: 700; 
-        font-size: 0.85rem; 
-        box-shadow: 0 4px 12px rgba(255, 222, 89, 0.4); 
-        letter-spacing: 0.06em; 
-        text-transform: uppercase;">
-            Most Popular
+        <!-- Training Program Card (Featured) -->
+        <div class="pricing-card featured">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
           </div>
-          <div style="font-weight: 700; font-size: 1.35rem; color: #4b278f; margin-bottom: 1rem;">
-            Training Program
-          </div>
-          <div style="font-weight: 800; font-size: 2.4rem; color: #38aafc; margin-bottom: 1rem;">
-            ₹999/month
-          </div>
-          <div style="font-size: 1rem; color: #666; margin-bottom: 2rem; line-height: 1.5;">
-            Complete ML training with personal mentorship and career guidance
-          </div>
-          <button style="
-  background-color: #38aafc; 
-  color: white; 
-  border: none; 
-  padding: 0.9rem 2.5rem; 
-  border-radius: 50px; 
-  font-weight: 600; 
-  cursor: pointer; 
-  box-shadow: 0 4px 14px rgba(56, 170, 252, 0.4); 
-  transition: background-color 0.3s ease;" onclick="handleAITechTraining('Service')">
+          <h3 class="card-title">Training Program</h3>
+          <div class="card-price">₹999<span class="price-period">/month</span></div>
+          <p class="card-description">Complete ML training with personal mentorship and career guidance</p>
+          <button class="card-button primary" onclick="handleAITechTraining('Service')">
             Start Training
           </button>
         </div>
 
         <!-- Custom Development Card -->
-        <div style="
-      background: #f7f9fc; 
-      padding: 3rem 2rem; 
-      border-radius: 22px; 
-      box-shadow: 0 8px 14px rgba(0,0,0,0.05); 
-      width: 100%; 
-      max-width: 350px; 
-      text-align: center; 
-      border: 1px solid transparent; 
-      transition: transform 0.3s ease, border-color 0.3s ease;">
-          <div style="font-weight: 700; font-size: 1.35rem; color: #4b278f; margin-bottom: 1rem;">
-            Custom Development
+        <div class="pricing-card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
           </div>
-          <div style="font-weight: 800; font-size: 2.4rem; color: #38aafc; margin-bottom: 1rem;">
-            From ₹299 to ₹25,000*
-          </div>
-          <div style="font-size: 1rem; color: #666; margin-bottom: 2rem; line-height: 1.5;">
-            Custom chatbot or ML solution built for your business .(Depend on work)
-          </div>
-          <button style="
-  background-color: #4b278f; 
-  color: white; 
-  border: none; 
-  padding: 0.9rem 2.5rem; 
-  border-radius: 50px; 
-  font-weight: 600; 
-  cursor: pointer; 
-  box-shadow: 0 4px 10px rgba(75, 39, 143, 0.3); 
-  transition: background-color 0.3s ease;" onclick="handleQuote('Custom Development')">
+          <h3 class="card-title">Custom Development</h3>
+          <div class="card-price">₹299 - ₹25K<span class="price-note">*</span></div>
+          <p class="card-description">Custom chatbot or ML solution built for your business (Depends on work)</p>
+          <button class="card-button" onclick="handleQuote('Custom Development')">
             Get Quote
           </button>
         </div>
@@ -366,10 +300,10 @@
 
   <script>
     // Theme Toggle Functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const themeText = document.getElementById('theme-text');
-    const body = document.body;
+    // const themeToggle = document.getElementById('theme-toggle');
+    // const themeIcon = document.getElementById('theme-icon');
+    // const themeText = document.getElementById('theme-text');
+    // const body = document.body;
 
     // Check for saved theme preference or default to 'light'
     const savedTheme = localStorage.getItem('theme') || 'light';
