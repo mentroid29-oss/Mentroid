@@ -240,7 +240,7 @@ const modalStyles = `
   background: var(--bg-card, #ffffff);
   border-radius: 20px;
   padding: 2.5rem;
-  max-width: 600px;
+  max-width: 900px;
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
@@ -426,7 +426,7 @@ const modalStyles = `
 }
 
 /* Mobile Responsive */
-@media (max-width: 640px) {
+@media (max-width: 800px) {
   .booking-modal-content {
     padding: 2rem 1.5rem;
     width: 95%;
@@ -782,13 +782,10 @@ function handleBooking(serviceName = 'Consultation') {
           <div class="form-group">
             <label for="bookingService">Service Type *</label>
             <select id="bookingService" name="service" required>
-              <option value="${serviceName}">${serviceName}</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile Apps">Mobile Apps</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="SEO Services">SEO Services</option>
-              <option value="Other">Other</option>
-            </select>
+            <option value="${serviceName}">${serviceName}</option>
+            <option value="AI Career Guidance">AI Career Guidance</option>
+            <option value="Tech & ML Consultancy">Tech & ML Consultancy</option>
+          </select>
           </div>
         </div>
         
