@@ -1,7 +1,6 @@
 // Configuration - UPDATE WITH YOUR EMAIL
 const BUSINESS_EMAIL = 'mentroid29@gmail.com'; // Change this to your email
 const BUSINESS_NAME = 'Mentroid'; // Change this to your business name
-
 // Booking functionality
 function handleBooking(serviceName = 'Consultation') {
   // Create modal overlay
@@ -18,19 +17,19 @@ function handleBooking(serviceName = 'Consultation') {
         <div class="form-row">
           <div class="form-group">
             <label for="bookingName">Full Name *</label>
-            <input type="text" id="bookingName" name="name" required placeholder="John Doe">
+            <input type="text" id="bookingName" name="name" required placeholder="XYZ">
           </div>
           
           <div class="form-group">
             <label for="bookingEmail">Email *</label>
-            <input type="email" id="bookingEmail" name="email" required placeholder="john@example.com">
+            <input type="email" id="bookingEmail" name="email" required placeholder="zyx@email.com">
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="bookingPhone">Phone Number *</label>
-            <input type="tel" id="bookingPhone" name="phone" required placeholder="+1 (555) 000-0000">
+            <input type="tel" id="bookingPhone" name="phone" required placeholder="+191-0000000000">
           </div>
           
           <div class="form-group">
@@ -38,35 +37,14 @@ function handleBooking(serviceName = 'Consultation') {
             <input type="date" id="bookingDate" name="date" required min="${getTodayDate()}">
           </div>
         </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="bookingTime">Preferred Time *</label>
-            <select id="bookingTime" name="time" required>
-              <option value="">Select time</option>
-              <option value="09:00">09:00 AM</option>
-              <option value="10:00">10:00 AM</option>
-              <option value="11:00">11:00 AM</option>
-              <option value="12:00">12:00 PM</option>
-              <option value="13:00">01:00 PM</option>
-              <option value="14:00">02:00 PM</option>
-              <option value="15:00">03:00 PM</option>
-              <option value="16:00">04:00 PM</option>
-              <option value="17:00">05:00 PM</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="bookingService">Service Type *</label>
-            <select id="bookingService" name="service" required>
-              <option value="${serviceName}">${serviceName}</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile Apps">Mobile Apps</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="SEO Services">SEO Services</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+
+        <div class="form-group">
+          <label for="bookingService">Service Type *</label>
+          <select id="bookingService" name="service" required>
+            <option value="${serviceName}">${serviceName}</option>
+            <option value="AI Career Guidance">AI Career Guidance</option>
+            <option value="Tech & ML Consultancy">Tech & ML Consultancy</option>
+          </select>
         </div>
         
         <div class="form-group">
@@ -85,7 +63,6 @@ function handleBooking(serviceName = 'Consultation') {
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
 
-  // Animate modal in
   setTimeout(() => modal.classList.add('active'), 10);
 }
 
@@ -101,7 +78,7 @@ function closeBookingModal() {
   }
 }
 
-// Submit booking via email
+// Submit booking
 function submitBooking(event, serviceName) {
   event.preventDefault();
 
@@ -109,32 +86,21 @@ function submitBooking(event, serviceName) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
 
-  // Show loading state
   const submitBtn = form.querySelector('.btn-submit');
   const originalText = submitBtn.textContent;
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
 
-  // Create email content
-  const emailSubject = `New ${data.service} Booking Request - ${data.name}`;
-  const emailBody = createEmailBody(data);
-
-  // Method 1: Using FormSubmit.co (Recommended - No backend needed)
   sendViaFormSubmit(data, submitBtn, originalText);
-
-  // Method 2: Using mailto (Backup - Opens email client)
-  // sendViaMailto(emailSubject, emailBody, data, submitBtn, originalText);
 }
 
-// Method 1: Send via FormSubmit.co (FREE service, no backend needed)
+// Send via FormSubmit.co
 function sendViaFormSubmit(data, submitBtn, originalText) {
-  // Create form for FormSubmit
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
   form.style.display = 'none';
 
-  // Add form fields
   const fields = {
     '_subject': `New ${data.service} Booking Request - ${data.name}`,
     '_template': 'table',
@@ -144,7 +110,6 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
     'Phone': data.phone,
     'Service': data.service,
     'Preferred Date': formatDate(data.date),
-    'Preferred Time': formatTime(data.time),
     'Message': data.message || 'No additional details provided'
   };
 
@@ -158,11 +123,8 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
 
   document.body.appendChild(form);
 
-  // Submit form
   try {
     form.submit();
-
-    // Show success after delay
     setTimeout(() => {
       showSuccessMessage(data);
       closeBookingModal();
@@ -170,96 +132,7 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
     }, 1000);
   } catch (error) {
     console.error('Error sending form:', error);
-    // Fallback to mailto
-    const emailSubject = `New ${data.service} Booking Request - ${data.name}`;
-    const emailBody = createEmailBody(data);
-    sendViaMailto(emailSubject, emailBody, data, submitBtn, originalText);
   }
-}
-
-// Method 2: Send via mailto (Opens default email client)
-function sendViaMailto(subject, body, data, submitBtn, originalText) {
-  const mailtoLink = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  // Open email client
-  window.location.href = mailtoLink;
-
-  // Show success message
-  setTimeout(() => {
-    showSuccessMessage(data);
-    closeBookingModal();
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }, 500);
-}
-
-// Method 3: Using Web3Forms (Alternative free service)
-function sendViaWeb3Forms(data, submitBtn, originalText) {
-  const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_KEY'; // Get from https://web3forms.com
-
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `New ${data.service} Booking Request - ${data.name}`,
-      from_name: data.name,
-      email: data.email,
-      phone: data.phone,
-      service: data.service,
-      preferred_date: formatDate(data.date),
-      preferred_time: formatTime(data.time),
-      message: data.message || 'No additional details'
-    })
-  })
-    .then(response => response.json())
-    .then(result => {
-      if (result.success) {
-        showSuccessMessage(data);
-        closeBookingModal();
-      } else {
-        alert('Failed to send booking. Please try again or contact us directly.');
-      }
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Failed to send booking. Please try again.');
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    });
-}
-
-// Create formatted email body
-function createEmailBody(data) {
-  return `
-NEW BOOKING REQUEST
-==================
-
-Client Information:
--------------------
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-
-Booking Details:
-----------------
-Service: ${data.service}
-Preferred Date: ${formatDate(data.date)}
-Preferred Time: ${formatTime(data.time)}
-
-Additional Details:
--------------------
-${data.message || 'No additional details provided'}
-
----
-This booking request was submitted through ${BUSINESS_NAME} website.
-Please respond to the client at ${data.email} or ${data.phone}.
-`;
 }
 
 // Show success message
@@ -273,8 +146,7 @@ function showSuccessMessage(bookingData) {
       <h2 class="success-title">Booking Request Sent!</h2>
       <p class="success-message">
         Thank you, <strong>${bookingData.name}</strong>! Your ${bookingData.service} request 
-        for <strong>${formatDate(bookingData.date)}</strong> at <strong>${formatTime(bookingData.time)}</strong>
-        has been sent successfully.
+        for <strong>${formatDate(bookingData.date)}</strong> has been sent successfully.
       </p>
       <p class="success-submessage">
         We'll contact you at <strong>${bookingData.email}</strong> or <strong>${bookingData.phone}</strong> within 24 hours to confirm your appointment.
@@ -282,7 +154,6 @@ function showSuccessMessage(bookingData) {
       <button class="btn-primary" onclick="closeSuccessModal()">Got it!</button>
     </div>
   `;
-
   document.body.appendChild(successModal);
 }
 
@@ -295,7 +166,7 @@ function closeSuccessModal() {
   }
 }
 
-// Utility functions
+// Utilities
 function getTodayDate() {
   return new Date().toISOString().split('T')[0];
 }
@@ -310,14 +181,6 @@ function formatDate(dateString) {
   });
 }
 
-function formatTime(timeString) {
-  const [hours] = timeString.split(':');
-  const hour = parseInt(hours);
-  const ampm = hour >= 12 ? 'PM' : 'AM';
-  const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
-  return `${displayHour}:00 ${ampm}`;
-}
-
 // Close modal on ESC key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
@@ -328,7 +191,6 @@ document.addEventListener('keydown', (e) => {
 
 // Initialize booking buttons
 document.addEventListener('DOMContentLoaded', () => {
-  // Add click handlers to all booking/consultation buttons
   const bookingButtons = document.querySelectorAll('[data-booking], .btn-booking, .consultation-btn');
   bookingButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -341,6 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // CSS for modal (add to your stylesheet)
 const modalStyles = `
 <style>
+* {
+  box-sizing: border-box;
+}
+
 .booking-modal {
   position: fixed;
   top: 0;
@@ -608,426 +474,97 @@ if (document.head) {
 }
 
 //Training Program
-
-// Booking functionality
-function handleBooking(serviceName = 'Consultation') {
-  // Create modal overlay
+// AI, ML, IoT & Video Editing Training / Service Modal
+function handleAITechTraining(trainingType = 'Service') {
   const modal = document.createElement('div');
   modal.className = 'booking-modal';
   modal.innerHTML = `
     <div class="booking-modal-overlay" onclick="closeBookingModal()"></div>
     <div class="booking-modal-content">
       <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-      <h2 class="modal-title">Book ${serviceName}</h2>
-      <p class="modal-subtitle">Fill out the form below to schedule your appointment</p>
+      <h2 class="modal-title">🤖 ${trainingType}</h2>
+      <p class="modal-subtitle">Register or request a quote for our AI-driven training or development service</p>
       
-      <form id="bookingForm" class="booking-form" onsubmit="submitBooking(event, '${serviceName}')">
+      <form id="aiMlForm" class="booking-form" onsubmit="submitAITechTraining(event, '${trainingType}')">
+
+        <!-- Basic Info -->
         <div class="form-row">
           <div class="form-group">
-            <label for="bookingName">Full Name *</label>
-            <input type="text" id="bookingName" name="name" required placeholder="John Doe">
+            <label for="aiName">Full Name *</label>
+            <input type="text" id="aiName" name="name" required placeholder="John Doe">
           </div>
-          
           <div class="form-group">
-            <label for="bookingEmail">Email *</label>
-            <input type="email" id="bookingEmail" name="email" required placeholder="john@example.com">
+            <label for="aiEmail">Email *</label>
+            <input type="email" id="aiEmail" name="email" required placeholder="john@example.com">
           </div>
         </div>
-        
+
         <div class="form-row">
           <div class="form-group">
-            <label for="bookingPhone">Phone Number *</label>
-            <input type="tel" id="bookingPhone" name="phone" required placeholder="+1 (555) 000-0000">
-          </div>
-          
-          <div class="form-group">
-            <label for="bookingDate">Preferred Date *</label>
-            <input type="date" id="bookingDate" name="date" required min="${getTodayDate()}">
+            <label for="aiPhone">Phone Number *</label>
+            <input type="tel" id="aiPhone" name="phone" required placeholder="+91 98765 43210">
           </div>
         </div>
-        
+
+        <!-- Service Type -->
         <div class="form-row">
           <div class="form-group">
-            <label for="bookingTime">Preferred Time *</label>
-            <select id="bookingTime" name="time" required>
-              <option value="">Select time</option>
-              <option value="09:00">09:00 AM</option>
-              <option value="10:00">10:00 AM</option>
-              <option value="11:00">11:00 AM</option>
-              <option value="12:00">12:00 PM</option>
-              <option value="13:00">01:00 PM</option>
-              <option value="14:00">02:00 PM</option>
-              <option value="15:00">03:00 PM</option>
-              <option value="16:00">04:00 PM</option>
-              <option value="17:00">05:00 PM</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="bookingService">Service Type *</label>
-            <select id="bookingService" name="service" required>
-              <option value="${serviceName}">${serviceName}</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile Apps">Mobile Apps</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="SEO Services">SEO Services</option>
-              <option value="Other">Other</option>
+            <label for="aiService">Service or Training Type *</label>
+            <select id="aiService" name="service" required>
+              <option value="">Select category</option>
+              <option value="AI Chatbot Development">AI Chatbot Development</option>
+              <option value="Machine Learning with IoT Integration">Machine Learning with IoT Integration</option>
+              <option value="AI Video Editing & Automation">AI Video Editing & Automation</option>
+              <option value="Deep Learning Model Training">Deep Learning Model Training</option>
+              <option value="Custom AI Solution / Consulting">Custom AI Solution / Consulting</option>
             </select>
           </div>
         </div>
-        
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="aiBudget">Estimated Budget Range *</label>
+            <select id="aiBudget" name="budget" required>
+              <option value="">Select range</option>
+              <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+              <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+              <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+              <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+              <option value="Above ₹1,00,000">Above ₹1,00,000 (Enterprise / Custom)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dataset Info -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="aiDataset">Dataset Availability *</label>
+            <select id="aiDataset" name="dataset" required>
+              <option value="">Select option</option>
+              <option value="I will provide my own dataset">I will provide my own dataset</option>
+              <option value="Need dataset creation / sourcing support">Need dataset creation / sourcing support</option>
+              <option value="Not applicable (e.g. chatbot training)">Not applicable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="aiStartDate">Preferred Start Date *</label>
+            <input type="date" id="aiStartDate" name="startDate" required min="${getTodayDate()}">
+          </div>
+        </div>
+
+        <!-- Project Goals -->
         <div class="form-group">
-          <label for="bookingMessage">Additional Details</label>
-          <textarea id="bookingMessage" name="message" rows="4" placeholder="Tell us about your project or requirements..."></textarea>
+          <label for="aiGoals">Project Goals / Learning Objectives</label>
+          <textarea id="aiGoals" name="goals" rows="4" placeholder="Describe your idea, project scope, or learning goals..."></textarea>
         </div>
-        
+
+        <!-- Actions -->
         <div class="form-actions">
           <button type="button" class="btn-cancel" onclick="closeBookingModal()">Cancel</button>
-          <button type="submit" class="btn-submit">Send Booking Request</button>
-        </div>
-      </form>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-  document.body.style.overflow = 'hidden';
-
-  // Animate modal in
-  setTimeout(() => modal.classList.add('active'), 10);
-}
-
-// Close modal
-function closeBookingModal() {
-  const modal = document.querySelector('.booking-modal');
-  if (modal) {
-    modal.classList.remove('active');
-    setTimeout(() => {
-      modal.remove();
-      document.body.style.overflow = '';
-    }, 300);
-  }
-}
-
-// Submit booking via email
-function submitBooking(event, serviceName) {
-  event.preventDefault();
-
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
-
-  // Show loading state
-  const submitBtn = form.querySelector('.btn-submit');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
-
-  // Create email content
-  const emailSubject = `New ${data.service} Booking Request - ${data.name}`;
-  const emailBody = createEmailBody(data);
-
-  // Method 1: Using FormSubmit.co (Recommended - No backend needed)
-  sendViaFormSubmit(data, submitBtn, originalText);
-
-  // Method 2: Using mailto (Backup - Opens email client)
-  // sendViaMailto(emailSubject, emailBody, data, submitBtn, originalText);
-}
-
-// Method 1: Send via FormSubmit.co (FREE service, no backend needed)
-function sendViaFormSubmit(data, submitBtn, originalText) {
-  // Create form for FormSubmit
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
-  form.style.display = 'none';
-
-  // Add form fields
-  const fields = {
-    '_subject': `New ${data.service} Booking Request - ${data.name}`,
-    '_template': 'table',
-    '_captcha': 'false',
-    'Name': data.name,
-    'Email': data.email,
-    'Phone': data.phone,
-    'Service': data.service,
-    'Preferred Date': formatDate(data.date),
-    'Preferred Time': formatTime(data.time),
-    'Message': data.message || 'No additional details provided'
-  };
-
-  Object.entries(fields).forEach(([key, value]) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = value;
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-
-  // Submit form
-  try {
-    form.submit();
-
-    // Show success after delay
-    setTimeout(() => {
-      showSuccessMessage(data);
-      closeBookingModal();
-      form.remove();
-    }, 1000);
-  } catch (error) {
-    console.error('Error sending form:', error);
-    // Fallback to mailto
-    const emailSubject = `New ${data.service} Booking Request - ${data.name}`;
-    const emailBody = createEmailBody(data);
-    sendViaMailto(emailSubject, emailBody, data, submitBtn, originalText);
-  }
-}
-
-// Method 2: Send via mailto (Opens default email client)
-function sendViaMailto(subject, body, data, submitBtn, originalText) {
-  const mailtoLink = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  // Open email client
-  window.location.href = mailtoLink;
-
-  // Show success message
-  setTimeout(() => {
-    showSuccessMessage(data);
-    closeBookingModal();
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }, 500);
-}
-
-// Method 3: Using Web3Forms (Alternative free service)
-function sendViaWeb3Forms(data, submitBtn, originalText) {
-  const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_KEY'; // Get from https://web3forms.com
-
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `New ${data.service} Booking Request - ${data.name}`,
-      from_name: data.name,
-      email: data.email,
-      phone: data.phone,
-      service: data.service,
-      preferred_date: formatDate(data.date),
-      preferred_time: formatTime(data.time),
-      message: data.message || 'No additional details'
-    })
-  })
-    .then(response => response.json())
-    .then(result => {
-      if (result.success) {
-        showSuccessMessage(data);
-        closeBookingModal();
-      } else {
-        alert('Failed to send booking. Please try again or contact us directly.');
-      }
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Failed to send booking. Please try again.');
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    });
-}
-
-// Create formatted email body
-function createEmailBody(data) {
-  return `
-NEW BOOKING REQUEST
-==================
-
-Client Information:
--------------------
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-
-Booking Details:
-----------------
-Service: ${data.service}
-Preferred Date: ${formatDate(data.date)}
-Preferred Time: ${formatTime(data.time)}
-
-Additional Details:
--------------------
-${data.message || 'No additional details provided'}
-
----
-This booking request was submitted through ${BUSINESS_NAME} website.
-Please respond to the client at ${data.email} or ${data.phone}.
-`;
-}
-
-// Show success message
-function showSuccessMessage(bookingData) {
-  const successModal = document.createElement('div');
-  successModal.className = 'booking-modal success-modal active';
-  successModal.innerHTML = `
-    <div class="booking-modal-overlay" onclick="closeSuccessModal()"></div>
-    <div class="booking-modal-content success-content">
-      <div class="success-icon">✓</div>
-      <h2 class="success-title">Booking Request Sent!</h2>
-      <p class="success-message">
-        Thank you, <strong>${bookingData.name}</strong>! Your ${bookingData.service} request 
-        for <strong>${formatDate(bookingData.date)}</strong> at <strong>${formatTime(bookingData.time)}</strong>
-        has been sent successfully.
-      </p>
-      <p class="success-submessage">
-        We'll contact you at <strong>${bookingData.email}</strong> or <strong>${bookingData.phone}</strong> within 24 hours to confirm your appointment.
-      </p>
-      <button class="btn-primary" onclick="closeSuccessModal()">Got it!</button>
-    </div>
-  `;
-
-  document.body.appendChild(successModal);
-}
-
-// Close success modal
-function closeSuccessModal() {
-  const modal = document.querySelector('.success-modal');
-  if (modal) {
-    modal.classList.remove('active');
-    setTimeout(() => modal.remove(), 300);
-  }
-}
-
-// Utility functions
-function getTodayDate() {
-  return new Date().toISOString().split('T')[0];
-}
-
-function formatDate(dateString) {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
-
-function formatTime(timeString) {
-  const [hours] = timeString.split(':');
-  const hour = parseInt(hours);
-  const ampm = hour >= 12 ? 'PM' : 'AM';
-  const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
-  return `${displayHour}:00 ${ampm}`;
-}
-
-// Close modal on ESC key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeBookingModal();
-    closeSuccessModal();
-  }
-});
-
-// Training Registration functionality
-function handleTraining(trainingType = 'Training Program') {
-  const modal = document.createElement('div');
-  modal.className = 'booking-modal';
-  modal.innerHTML = `
-    <div class="booking-modal-overlay" onclick="closeBookingModal()"></div>
-    <div class="booking-modal-content">
-      <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-      <h2 class="modal-title">🎓 Start ${trainingType}</h2>
-      <p class="modal-subtitle">Register for our training program and boost your skills</p>
-      
-      <form id="trainingForm" class="booking-form" onsubmit="submitTraining(event, '${trainingType}')">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingName">Full Name *</label>
-            <input type="text" id="trainingName" name="name" required placeholder="John Doe">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingEmail">Email *</label>
-            <input type="email" id="trainingEmail" name="email" required placeholder="john@example.com">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingPhone">Phone Number *</label>
-            <input type="tel" id="trainingPhone" name="phone" required placeholder="+1 (555) 000-0000">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingLevel">Experience Level *</label>
-            <select id="trainingLevel" name="level" required>
-              <option value="">Select level</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-              <option value="Professional">Professional</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingCourse">Training Course *</label>
-            <select id="trainingCourse" name="course" required>
-              <option value="">Select course</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile App Development">Mobile App Development</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Digital Marketing">Digital Marketing</option>
-              <option value="SEO & Analytics">SEO & Analytics</option>
-              <option value="Full Stack Development">Full Stack Development</option>
-              <option value="Custom Training">Custom Training</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingMode">Preferred Mode *</label>
-            <select id="trainingMode" name="mode" required>
-              <option value="">Select mode</option>
-              <option value="Online">Online</option>
-              <option value="In-Person">In-Person</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingStartDate">Preferred Start Date *</label>
-            <input type="date" id="trainingStartDate" name="startDate" required min="${getTodayDate()}">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingDuration">Training Duration *</label>
-            <select id="trainingDuration" name="duration" required>
-              <option value="">Select duration</option>
-              <option value="1 Month">1 Month</option>
-              <option value="2 Months">2 Months</option>
-              <option value="3 Months">3 Months</option>
-              <option value="6 Months">6 Months</option>
-              <option value="Custom">Custom Duration</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="trainingGoals">Your Learning Goals & Expectations</label>
-          <textarea id="trainingGoals" name="goals" rows="4" placeholder="Tell us what you want to achieve from this training..."></textarea>
-        </div>
-        
-        <div class="form-actions">
-          <button type="button" class="btn-cancel" onclick="closeBookingModal()">Cancel</button>
-          <button type="submit" class="btn-submit">Register Now</button>
+          <button type="submit" class="btn-submit">Submit Request</button>
         </div>
       </form>
     </div>
@@ -1038,8 +575,8 @@ function handleTraining(trainingType = 'Training Program') {
   setTimeout(() => modal.classList.add('active'), 10);
 }
 
-// Submit training registration
-function submitTraining(event, trainingType) {
+// Submit AI/ML/IoT form
+function submitAITechTraining(event, trainingType) {
   event.preventDefault();
 
   const form = event.target;
@@ -1051,31 +588,31 @@ function submitTraining(event, trainingType) {
   submitBtn.textContent = 'Submitting...';
   submitBtn.disabled = true;
 
-  // Send via FormSubmit
-  sendTrainingViaFormSubmit(data, submitBtn, originalText);
+  // Use FormSubmit service (free, no backend required)
+  sendAITechViaFormSubmit(data, submitBtn, originalText);
 }
 
-// Send training registration via FormSubmit
-function sendTrainingViaFormSubmit(data, submitBtn, originalText) {
+// Send via FormSubmit
+function sendAITechViaFormSubmit(data, submitBtn, originalText) {
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
   form.style.display = 'none';
 
   const fields = {
-    '_subject': `🎓 New Training Registration - ${data.name}`,
+    '_subject': `🤖 New ${data.service} Inquiry - ${data.name}`,
     '_template': 'table',
     '_captcha': 'false',
-    'Registration Type': 'Training Program',
+    'Category': 'AI / ML / IoT / Video Service or Training',
     'Name': data.name,
     'Email': data.email,
     'Phone': data.phone,
     'Experience Level': data.level,
-    'Training Course': data.course,
-    'Training Mode': data.mode,
+    'Service Type': data.service,
+    'Budget Range': data.budget,
+    'Dataset Availability': data.dataset,
     'Preferred Start Date': formatDate(data.startDate),
-    'Training Duration': data.duration,
-    'Learning Goals': data.goals || 'No specific goals mentioned'
+    'Goals / Description': data.goals || 'Not provided'
   };
 
   Object.entries(fields).forEach(([key, value]) => {
@@ -1092,16 +629,40 @@ function sendTrainingViaFormSubmit(data, submitBtn, originalText) {
     form.submit();
 
     setTimeout(() => {
-      showTrainingSuccess(data);
+      showAISuccessMessage(data);
       closeBookingModal();
       form.remove();
     }, 1000);
   } catch (error) {
-    console.error('Error sending form:', error);
-    alert('Failed to submit registration. Please try again.');
+    console.error('Error:', error);
+    alert('Failed to submit request. Please try again.');
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   }
+}
+
+// Success Message for AI/ML Training or Service
+function showAISuccessMessage(data) {
+  const successModal = document.createElement('div');
+  successModal.className = 'booking-modal success-modal active';
+  successModal.innerHTML = `
+    <div class="booking-modal-overlay" onclick="closeSuccessModal()"></div>
+    <div class="booking-modal-content success-content">
+      <div class="success-icon">✅</div>
+      <h2 class="success-title">Request Submitted!</h2>
+      <p class="success-message">
+        Thank you, <strong>${data.name}</strong>! Your inquiry for 
+        <strong>${data.service}</strong> (Budget: <strong>${data.budget}</strong>) 
+        has been sent successfully.
+      </p>
+      <p class="success-submessage">
+        We’ll contact you at <strong>${data.email}</strong> or <strong>${data.phone}</strong> 
+        soon to discuss your project or training details.
+      </p>
+      <button class="btn-primary" onclick="closeSuccessModal()">Got it!</button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
 }
 
 // Show training success message
