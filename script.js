@@ -29,7 +29,7 @@ function handleBooking(serviceName = 'Consultation') {
         <div class="form-row">
           <div class="form-group">
             <label for="bookingPhone">Phone Number *</label>
-            <input type="tel" id="bookingPhone" name="phone" required placeholder="+191-0000000000">
+            <input type="tel" id="bookingPhone" name="phone" required placeholder="+91 98765 43210">
           </div>
           
           <div class="form-group">
@@ -465,6 +465,11 @@ const modalStyles = `
     font-size: 0.9rem;
   }
 }
+
+textarea{
+ resize : vertical;
+ min-height:4.5em;
+}
 </style>
 `;
 
@@ -491,11 +496,11 @@ function handleAITechTraining(trainingType = 'Service') {
         <div class="form-row">
           <div class="form-group">
             <label for="aiName">Full Name *</label>
-            <input type="text" id="aiName" name="name" required placeholder="John Doe">
+            <input type="text" id="aiName" name="name" required placeholder="XYZ">
           </div>
           <div class="form-group">
             <label for="aiEmail">Email *</label>
-            <input type="email" id="aiEmail" name="email" required placeholder="john@example.com">
+            <input type="email" id="aiEmail" name="email" required placeholder="xyz.gmail.com">
           </div>
         </div>
 
@@ -504,10 +509,6 @@ function handleAITechTraining(trainingType = 'Service') {
             <label for="aiPhone">Phone Number *</label>
             <input type="tel" id="aiPhone" name="phone" required placeholder="+91 98765 43210">
           </div>
-        </div>
-
-        <!-- Service Type -->
-        <div class="form-row">
           <div class="form-group">
             <label for="aiService">Service or Training Type *</label>
             <select id="aiService" name="service" required>
@@ -533,10 +534,6 @@ function handleAITechTraining(trainingType = 'Service') {
               <option value="Above ₹1,00,000">Above ₹1,00,000 (Enterprise / Custom)</option>
             </select>
           </div>
-        </div>
-
-        <!-- Dataset Info -->
-        <div class="form-row">
           <div class="form-group">
             <label for="aiDataset">Dataset Availability *</label>
             <select id="aiDataset" name="dataset" required>
@@ -547,6 +544,7 @@ function handleAITechTraining(trainingType = 'Service') {
             </select>
           </div>
         </div>
+
 
         <div class="form-row">
           <div class="form-group">
@@ -741,19 +739,19 @@ function handleBooking(serviceName = 'Consultation') {
         <div class="form-row">
           <div class="form-group">
             <label for="bookingName">Full Name *</label>
-            <input type="text" id="bookingName" name="name" required placeholder="John Doe">
+            <input type="text" id="bookingName" name="name" required placeholder="XYZ">
           </div>
           
           <div class="form-group">
             <label for="bookingEmail">Email *</label>
-            <input type="email" id="bookingEmail" name="email" required placeholder="john@example.com">
+            <input type="email" id="bookingEmail" name="email" required placeholder="xyz@email.com">
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="bookingPhone">Phone Number *</label>
-            <input type="tel" id="bookingPhone" name="phone" required placeholder="+1 (555) 000-0000">
+            <input type="tel" id="bookingPhone" name="phone" required placeholder="+91 98765 43210">
           </div>
           
           <div class="form-group">
@@ -1061,19 +1059,19 @@ function handleTraining(trainingType = 'Training Program') {
         <div class="form-row">
           <div class="form-group">
             <label for="trainingName">Full Name *</label>
-            <input type="text" id="trainingName" name="name" required placeholder="John Doe">
+            <input type="text" id="trainingName" name="name" required placeholder="XYZ">
           </div>
           
           <div class="form-group">
             <label for="trainingEmail">Email *</label>
-            <input type="email" id="trainingEmail" name="email" required placeholder="john@example.com">
+            <input type="email" id="trainingEmail" name="email" required placeholder="xyz@gmail.com">
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="trainingPhone">Phone Number *</label>
-            <input type="tel" id="trainingPhone" name="phone" required placeholder="+1 (555) 000-0000">
+            <input type="tel" id="trainingPhone" name="phone" required placeholder="+91-9876543218">
           </div>
           
           <div class="form-group">
@@ -1263,7 +1261,7 @@ function handleQuote(serviceType = 'Custom Development') {
         <div class="form-row">
           <div class="form-group">
             <label for="quoteName">Full Name *</label>
-            <input type="text" id="quoteName" name="name" required placeholder="John Doe">
+            <input type="text" id="quoteName" name="name" required placeholder="XYZ">
           </div>
           
           <div class="form-group">
@@ -1275,7 +1273,7 @@ function handleQuote(serviceType = 'Custom Development') {
         <div class="form-row">
           <div class="form-group">
             <label for="quoteEmail">Email *</label>
-            <input type="email" id="quoteEmail" name="email" required placeholder="john@example.com">
+            <input type="email" id="quoteEmail" name="email" required placeholder="xyz@gmail.com">
           </div>
           
           <div class="form-group">
