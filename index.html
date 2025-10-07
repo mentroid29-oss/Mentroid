@@ -23,7 +23,7 @@
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#pricing">Pricing</a>
-        <a href="#testimonials">Reviews</a>
+        <!-- <a href="#testimonials">Reviews</a> -->
         <a href="#contact">Contact</a>
       </div>
 
@@ -41,8 +41,7 @@
       <p>I create custom chatbots for your business, provide comprehensive ML training, and offer personalized career
         guidance to help you succeed in the AI industry.</p>
       <div class="hero-buttons">
-        <button class="btn-primary">Get Your Custom Solution 🚀</button>
-        <button class="btn-secondary">View My Work</button>
+        <button class="btn-primary" onclick="handleBooking('Consultation')">Get Your Custom Solution</button>
       </div>
     </div>
   </section>
@@ -114,7 +113,7 @@
         </div>
         <div class="service-card">
           <div class="service-icon">📸</div>
-          <div class="service-title">Photo/Video Editing Solutions</div>
+          <div class="service-title">Photo/Video Editing </div>
           <ul class="service-features">
             <li>Professional photo retouching & enhancement</li>
             <li>Video cutting, effects & color grading</li>
@@ -161,19 +160,16 @@
       <div class="pricing-cards">
         <!-- Consultation Card -->
 
-        <div class="pricing-card">
-          <div class="card-content">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-            </div>
-            <h3 class="card-title">Consultation</h3>
-            <div class="card-price">₹299</div>
-            <p class="card-description">One-time strategy session for your AI/ML needs</p>
+        <div class="pricing-card ">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
           </div>
-
-          <button class="card-button" onclick="handleBooking('Consultation')">
+          <h3 class="card-title">Consultation</h3>
+          <div class="card-price">₹299</div>
+          <p class="card-description">One-time strategy session for your AI/ML needs</p>
+          <button class="card-button primary" onclick="handleBooking('Consultation')">
             Book Consultation
           </button>
         </div>
@@ -246,13 +242,12 @@
     </section> -->
 
     <!-- Contact -->
-    <section id="contact" class="section-container">
+    <!-- <section id="contact" class="section-container">
       <h2 class="section-title">Get in Touch</h2>
       <p class="section-subtitle">Have questions or feedback? Drop me a message!</p>
 
       <div class="contact-wrapper">
 
-        <!-- Left: Contact Info -->
         <div class="contact-info-box">
           <div class="contact-method">
             <div class="contact-icon">📧</div>
@@ -266,7 +261,6 @@
         </div>
 
 
-        <!-- Right: Feedback Form -->
         <div class="contact-form-box">
           <form action="https://formspree.io/f/xeoredjd" method="POST">
             <div class="form-group">
@@ -283,52 +277,77 @@
         </div>
 
       </div>
+    </section> -->
+    <section id="contact" class="section-container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subtitle">
+        Have any questions, project ideas, or feedback? I’d love to hear from you!
+      </p>
+
+      <!-- Right: Feedback Form -->
+      <div class="contact-form-box">
+        <h3 class="contact-heading">Send a Message</h3>
+        <form action="https://formspree.io/f/xeoredjd" method="POST" class="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+      </div>
+      </div>
     </section>
 
   </main>
 
-  <footer>
-    <p><strong>Mentroid - Professional AI & ML Services</strong></p>
-    <p>Transforming businesses and careers through intelligent technology solutions</p>
-    <p>📧mentroid29@gmail.com </p>
-    <p>© 2025 Mentroid. All rights reserved.</p>
-    <p style="margin-top: 1rem;">
-      <span>Follow us: </span>
-      <span>🌐 LinkedIn | 🐦 Twitter | 📸 Instagram | 💼 Portfolio</span>
-    </p>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <img src="Images/logo1.png" alt="Mentroid Logo" class="footer-logo">
+        <p><strong>Mentroid</strong> is a leading provider of professional AI & ML services. We specialize in developing
+          intelligent systems that transform businesses, careers, and digital experiences.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon">🌐</a>
+          <a href="#" class="social-icon">🐦</a>
+          <a href="#" class="social-icon">📸</a>
+          <a href="#" class="social-icon">💼</a>
+        </div>
+      </div>
+
+      <div class="footer-services">
+        <h3>OUR SERVICES</h3>
+        <ul>
+          <li>Chatbot Development</li>
+          <li>ML Training</li>
+          <li>AI Career Guidance</li>
+          <li>Tech Consulting</li>
+          <li>AI/ML & GenAI Projects</li>
+          <li>IoT + ML Solutions</li>
+          <li>Photo/Video Editing </li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>CONTACT US</h3>
+        <p>📍 Sehore, India</p>
+        <p>📧 <a href="mailto:mentroid29@gmail.com" class="contact-link">
+            mentroid29@gmail.com
+          </a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Mentroid. All Rights Reserved.</p>
+    </div>
   </footer>
 
+
   <script>
-    // Theme Toggle Functionality
-    // const themeToggle = document.getElementById('theme-toggle');
-    // const themeIcon = document.getElementById('theme-icon');
-    // const themeText = document.getElementById('theme-text');
-    // const body = document.body;
-
-    // Check for saved theme preference or default to 'light'
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
-    updateThemeButton(savedTheme);
-
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-      body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeButton(newTheme);
-    });
-
-    function updateThemeButton(theme) {
-      if (theme === 'dark') {
-        themeIcon.textContent = '☀️';
-        themeText.textContent = 'Light';
-      } else {
-        themeIcon.textContent = '🌙';
-        themeText.textContent = 'Dark';
-      }
-    }
-
     // Header scroll effect
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
