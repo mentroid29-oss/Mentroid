@@ -1320,3 +1320,121 @@ html {
   transform: translateY(-3px);
   box-shadow: 0 10px 35px rgba(76, 111, 255, 0.5);
 }
+
+/* === Footer Styling === */
+footer {
+  background: #0a0c23;
+  /* deep navy blue */
+  color: #d9e1ff;
+  font-family: "Poppins", sans-serif;
+  padding: 4rem 2rem 2rem;
+  box-shadow: 0 -5px 30px rgba(0, 0, 50, 0.6);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1px solid rgba(100, 130, 255, 0.2);
+  padding-bottom: 2.5rem;
+}
+
+.footer-logo {
+  width: 180px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(100, 130, 255, 0.5));
+}
+
+.footer-about,
+.footer-services,
+.footer-contact {
+  flex: 1 1 300px;
+}
+
+.footer-about p {
+  color: #b3baf5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-services h3,
+.footer-contact h3 {
+  color: #6e8cff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(100, 130, 255, 0.5);
+}
+
+.footer-services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-services li {
+  color: #aab2ff;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-services li:hover {
+  color: #8ab4ff;
+  text-shadow: 0 0 8px rgba(138, 180, 255, 0.7);
+  cursor: pointer;
+}
+
+.footer-contact p {
+  color: #aab2ff;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-socials {
+  margin-top: 1rem;
+}
+
+.social-icon {
+  margin-right: 0.8rem;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #6e8cff;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #9bb9ff;
+  text-shadow: 0 0 10px rgba(155, 185, 255, 0.9);
+}
+
+/* === Footer Bottom === */
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  color: #8f99ff;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(120, 150, 255, 0.5);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-about,
+  .footer-services,
+  .footer-contact {
+    flex: 1 1 100%;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
