@@ -14,10 +14,6 @@ Live Demo: [Mentroid](www.mentroid.co.in)
 - [Pricing](#pricing)  
 - [Team](#team)  
 - [Contact](#contact)  
-- [Tech Stack](#tech-stack)  
-- [Roadmap](#roadmap)  
-- [Contribution Guidelines](#contribution-guidelines)  
-- [License](#license)  
 
 ---
 
