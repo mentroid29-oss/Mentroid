@@ -2,7 +2,7 @@
 
 **Mentroid** is a professional AI & ML platform offering custom chatbot development, machine learning training, AI career consulting, and more. It empowers businesses and individuals to build intelligent systems, launch AI-driven projects, and grow in the AI/ML space.
 
-Live Demo: [https://mentroid.vercel.app/](www.mentroid.co.in)
+Live Demo: [Mentroid](www.mentroid.co.in)
 
 ---
 
