@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -27,22 +28,15 @@
         <!-- <a href="#testimonials">Reviews</a> -->
         <a href="#contact">Contact</a>
       </div>
-
-      <!-- <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <span id="theme-icon">🌙</span>
-        <span id="theme-text">Dark</span>
-      </button> -->
     </nav>
   </header>
-
-
   <section class="hero" id="hero">
     <div class="hero-content">
       <h1>Professional AI & ML Solutions</h1>
-      <p>I create custom chatbots for your business, provide comprehensive ML training, and offer personalized career
-        guidance to help you succeed in the AI industry.</p>
+      <p>Empowering businesses and individuals with intelligent chatbot development, advanced ML training, and strategic
+        AI career guidance — turning innovation into impact.</p>
       <div class="hero-buttons">
-        <button class="btn-primary" onclick="handleBooking('Consultation')">Get Your Custom Solution</button>
+        <button class="btn-primary" onclick="handleBooking('Consultation')">Get Your Custom AI Solution</button>
       </div>
     </div>
   </section>
@@ -52,75 +46,146 @@
     <section id="services">
       <h2>What I Offer</h2>
       <div class="services">
-        <div class="service-card">
-          <div class="service-icon">🤖</div>
-          <div class="service-title">Chatbot Development</div>
+
+        <!-- Custom Chatbot Development -->
+        <div class="service-card" data-icon="bot">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">Custom Chatbot Development</div>
+          </div>
           <ul class="service-features">
-            <li>Custom flow</li>
-            <li>System integration</li>
-            <li>Automated replies</li>
-            <li>Analytics</li>
+            <li>Designed specifically for your company and industry</li>
+            <li>Personalized conversation flow</li>
+            <li>Seamless system integration</li>
+            <li>Automated smart replies</li>
+            <li>Performance analytics and insights</li>
           </ul>
+          <div class="service-action">
+            <button class="btn-primary"
+              onclick="openPlaylistModal('PLGg2Ny7CCuSVB_EkfkrDdRM8_Oct3IhG4&si=YIr7rnhpvF0BbDb3')">View Work</button>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">📚</div>
-          <div class="service-title">ML Training</div>
+
+        <!-- Machine Learning Training -->
+        <div class="service-card" data-icon="book-open">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">Machine Learning Training</div>
+          </div>
           <ul class="service-features">
-            <li>Personal curriculum</li>
-            <li>Hands-on projects</li>
-            <li>Case studies</li>
-            <li>Portfolio support</li>
+            <li>Custom training using your own datasets</li>
+            <li>Algorithm selection based on project goals</li>
+            <li>Hands-on implementation with real data</li>
+            <li>Guidance on model evaluation and optimization</li>
+            <li>Practical projects for portfolio enhancement</li>
           </ul>
+          <div class="service-action">
+            <button class="btn-primary"
+              onclick="openPlaylistModal('PLGg2Ny7CCuSX_Y1xZRzAyP6_S--9mhG7-&si=s-YOfDrvcIlkbKG3')">View Work</button>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🎯</div>
-          <div class="service-title">AI Career Guidance</div>
+
+        <!-- AI Career & Tech Consulting -->
+        <div class="service-card" data-icon="target">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">AI Career & Tech Consulting</div>
+          </div>
           <ul class="service-features">
-            <li>Roadmap design</li>
-            <li>Resume review</li>
-            <li>Interview prep</li>
-            <li>Connections</li>
+            <li>1-on-1 personalized mentoring sessions</li>
+            <li>Career roadmap and market insights</li>
+            <li>Resume and portfolio guidance</li>
+            <li>Technical code and project review</li>
+            <li>Networking and industry connections</li>
           </ul>
+          <div class="service-action">
+            <button class="btn-primary"
+              onclick="openPlaylistModal('PLGg2Ny7CCuSXwTdLwlNt7hRejGscD7TTy&si=SJ6JJnp_R7jRrOm0')">View Work</button>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">💡</div>
-          <div class="service-title">Tech Consulting</div>
+
+        <!-- AI/ML & GenAI Projects -->
+        <div class="service-card" data-icon="cpu">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">AI/ML & GenAI Projects</div>
+          </div>
           <ul class="service-features">
-            <li>Assessment</li>
-            <li>Strategy</li>
-            <li>Code review</li>
-            <li>Best practices</li>
+            <li>Innovative project ideas and guidance</li>
+            <li>Machine learning model development</li>
+            <li>Web integration with interactive ML models</li>
+            <li>Generative AI project assistance</li>
+            <li>1-on-1 mentorship and implementation support</li>
           </ul>
+          <div class="service-action">
+            <button class="btn-primary"
+              onclick="openPlaylistModal('PLGg2Ny7CCuSXciF-SMTgSvJ6K-ucob7Dx&si=PTSZacxaKwmDWBZE')">View Work</button>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🤖</div>
-          <div class="service-title">AI/ML & GenAI Projects</div>
-          <ul class="service-features">
-            <li>Project ideas</li>
-            <li>Model development</li>
-            <li>GenAI integration</li>
-            <li>Mentorship</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🛰️</div>
-          <div class="service-title">IoT + ML Solutions</div>
+
+        <!-- IoT + ML Solutions -->
+        <div class="service-card" data-icon="wifi">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">IoT + ML Solutions</div>
+          </div>
           <ul class="service-features">
             <li>IoT device integration & control</li>
             <li>Edge & cloud ML deployment</li>
             <li>Automated insights & predictions</li>
             <li>Remote monitoring & alerts</li>
           </ul>
+          <div class="service-action">
+            <button class="btn-primary" onclick="openPlaylistModal('PL_IOT_ID')">View Work</button>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">📸</div>
-          <div class="service-title">Photo/Video Editing </div>
+
+        <!-- Photo/Video Editing -->
+        <div class="service-card" data-icon="camera">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">Photo/Video Editing</div>
+          </div>
           <ul class="service-features">
             <li>Professional photo retouching & enhancement</li>
             <li>Video cutting, effects & color grading</li>
             <li>Automated batch processing & AI tools</li>
             <li>High-res export & format optimization</li>
           </ul>
+          <div class="service-action">
+            <button class="btn-primary" onclick="openPlaylistModal('PL_PHOTO_VIDEO_ID')">View Work</button>
+          </div>
+        </div>
+
+        <!-- Website Development -->
+        <div class="service-card" data-icon="laptop">
+          <div class="service-header">
+            <div class="service-icon"></div>
+            <div class="service-title">Website Development</div>
+          </div>
+          <ul class="service-features">
+            <li>Custom front-end (UI/UX) & back-end development</li>
+            <li>Full-stack development (React, Node.js, Python, etc.)</li>
+            <li>E-commerce solutions</li>
+            <li>Responsive design for all devices & SEO optimization</li>
+          </ul>
+          <div class="service-action">
+            <button class="btn-primary"
+              onclick="openPlaylistModal('PLGg2Ny7CCuSVfvXHk-2prZKTAw9sfRxbS&si=HIjpNjid5T6XzTcC')">View Work</button>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <!-- Modal for YouTube Playlist -->
+      <div id="playlistModal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; justify-content:center; align-items:center; z-index:1000;">
+        <div style="position:relative; width:80%; max-width:900px;">
+          <iframe id="youtubePlaylist" width="100%" height="500" src="" frameborder="0" allowfullscreen></iframe>
+          <button onclick="closePlaylistModal()"
+            style="position:absolute; top:-20px; right:-20px; background:#fff; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer;">×</button>
         </div>
       </div>
     </section>
@@ -160,7 +225,6 @@
 
       <div class="pricing-cards">
         <!-- Consultation Card -->
-
         <div class="pricing-card ">
           <div class="card-icon">
             <svg viewBox="0 0 24 24">
@@ -169,7 +233,10 @@
           </div>
           <h3 class="card-title">Consultation</h3>
           <div class="card-price">₹299</div>
-          <p class="card-description">One-time strategy session for your AI/ML needs</p>
+          <!-- <p class="card-description">One-on-one strategy session to discuss AI/ML opportunities for your business. -->
+          <p class="card-description">Unlock new possibilities with a personalized AI/ML strategy session — designed to
+            help your business innovate, and stay ahead.</p>
+          </p>
           <button class="card-button primary" onclick="handleBooking('Consultation')">
             Book Consultation
           </button>
@@ -185,7 +252,9 @@
           </div>
           <h3 class="card-title">Training Program</h3>
           <div class="card-price">₹999<span class="price-period">/month</span></div>
-          <p class="card-description">Complete ML training with personal mentorship and career guidance</p>
+          <p class="card-description">Comprehensive ML & AI training with hands-on projects, personalized
+            mentorship,
+            and career guidance.</p>
           <button class="card-button primary" onclick="handleAITechTraining('Service')">
             Start Training
           </button>
@@ -201,7 +270,9 @@
           </div>
           <h3 class="card-title">Custom Development</h3>
           <div class="card-price">₹299 - ₹25K<span class="price-note">*</span></div>
-          <p class="card-description">Custom chatbot or ML solution built for your business (Depends on work)</p>
+          <p class="card-description">Tailor-made chatbots, ML models, or AI solutions designed specifically for
+            your
+            business needs.</p>
           <button class="card-button" onclick="handleQuote('Custom Development')">
             Get Quote
           </button>
@@ -242,52 +313,94 @@
       </div>
     </section> -->
 
-    <!-- Contact -->
-    <!-- <section id="contact" class="section-container">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="section-subtitle">Have questions or feedback? Drop me a message!</p>
+    <section id="team" class="team-section">
+      <h2 class="team-title">Meet Our Team</h2>
+      <p class="team-subtitle">Innovators shaping the future of AI & ML</p>
 
-      <div class="contact-wrapper">
-
-        <div class="contact-info-box">
-          <div class="contact-method">
-            <div class="contact-icon">📧</div>
-            <div>
-              <div class="contact-label">Email</div>
-              <div class="contact-value">
-                <a href="mailto:mentroid29@gmail.com" class="email-link">mentroid29@gmail.com</a>
-              </div>
-            </div>
-          </div>
+      <div class="team-cards">
+        <!-- Om Roy -->
+        <div class="team-card">
+          <img src="images/omroy.jpg" alt="Om Roy" class="team-photo">
+          <h3 class="team-name">Om Roy</h3>
+          <p class="team-role">CEO & Founder</p>
+          <a href="https://www.linkedin.com/in/omroy07" target="_blank" class="team-link">View LinkedIn</a>
         </div>
 
-
-        <div class="contact-form-box">
-          <form action="https://formspree.io/f/xeoredjd" method="POST">
-            <div class="form-group">
-              <input type="text" name="name" placeholder="Your Name" required />
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" placeholder="Your Email" required />
-            </div>
-            <div class="form-group">
-              <textarea name="message" rows="4" placeholder="Your Feedback" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary">Send Feedback</button>
-          </form>
+        <!-- Shubhangi Roy -->
+        <div class="team-card">
+          <img src="images/shubhangi.jpg" alt="Shubhangi Roy" class="team-photo">
+          <h3 class="team-name">Shubhangi Roy</h3>
+          <p class="team-role">Social & Design Lead</p>
+          <a href="https://www.linkedin.com/in/shubhangiroy" target="_blank" class="team-link">View LinkedIn</a>
         </div>
 
+        <!-- Harshit Jaiswal -->
+        <div class="team-card">
+          <img src="images/harshitjaiswal.jpg" alt="Harshit Jaiswal" class="team-photo">
+          <h3 class="team-name">Harshit Jaiswal</h3>
+          <p class="team-role">Editor</p>
+          <a href="https://www.linkedin.com/in/harshit-jaiswal" target="_blank" class="team-link">View LinkedIn</a>
+        </div>
+
+        <!-- Harsh Gupta -->
+        <div class="team-card">
+          <img src="images/harshgupta.jpg" alt="Harsh Gupta" class="team-photo">
+          <h3 class="team-name">Harsh Gupta</h3>
+          <p class="team-role">IoT Lead</p>
+          <a href="https://www.linkedin.com/in/harshgupta" target="_blank" class="team-link">View LinkedIn</a>
+        </div>
       </div>
-    </section> -->
+    </section>
+    <section id="team" class="team-section">
+      <h2 class="team-title">Meet Our Team</h2>
+      <p class="team-subtitle">Innovators shaping the future of AI & ML</p>
+
+      <div class="team-cards">
+        <!-- Om Roy -->
+        <div class="team-card">
+          <img src="Images/om1.jpg" alt="Om Roy" class="team-photo">
+          <h3 class="team-name">Om Roy</h3>
+          <p class="team-role">CEO & Founder</p>
+          <a href="https://www.linkedin.com/in/om-roy-3b809628a/" target="_blank" class="team-link">View LinkedIn</a>
+          <a href="https://portfolio-eiv7.vercel.app/" target="_blank" class="team-link">View Portfolio</a>
+        </div>
+
+        <!-- Shubhangi Roy -->
+        <div class="team-card">
+          <img src="Images/shubhangi.jpg" alt="Shubhangi Roy" class="team-photo">
+          <h3 class="team-name">Shubhangi Roy</h3>
+          <p class="team-role">Social & Design Lead</p>
+          <a href="https://www.linkedin.com/in/shubhangi-roy-762a3427a/" target="_blank" class="team-link">View
+            LinkedIn</a>
+        </div>
+
+        <!-- Harshit Jaiswal -->
+        <div class="team-card">
+          <img src="Images/harshit.jpg" alt="Harshit Jaiswal" class="team-photo">
+          <h3 class="team-name">Harshit Jaiswal</h3>
+          <p class="team-role">Editor</p>
+          <a href="http://www.linkedin.com/in/harshit-jaiswal-882662215" target="_blank" class="team-link">View
+            LinkedIn</a>
+        </div>
+
+        <!-- Harsh Gupta -->
+        <div class="team-card">
+          <img src="Images/harsh.jpg" alt="Harsh Gupta" class="team-photo">
+          <h3 class="team-name">Harsh Gupta</h3>
+          <p class="team-role">IoT Lead</p>
+          <a href="https://www.linkedin.com/in/harsh-gupta-b7a282278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            target="_blank" class="team-link">View LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="section-container">
       <h2 class="section-title">Get in Touch</h2>
       <p class="section-subtitle">
         Have any questions, project ideas, or feedback? I’d love to hear from you!
       </p>
-
-      <!-- Right: Feedback Form -->
       <div class="contact-form-box">
-        <h3 class="contact-heading">Send a Message</h3>
+        <h3 class="contact-heading" style="text-align:center;">Send a Message</h3>
         <form action="https://formspree.io/f/xeoredjd" method="POST" class="contact-form">
           <div class="form-group">
             <input type="text" name="name" placeholder="Your Name" required />
@@ -298,11 +411,42 @@
           <div class="form-group">
             <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
           </div>
-          <button type="submit" class="btn-primary">Send Message</button>
+          <div style="text-align:center;">
+            <button type="submit" class="btn-primary">Send Message</button>
+          </div>
         </form>
       </div>
       </div>
     </section>
+    <!-- Floating Chatbot -->
+    <div id="chatbot-widget">
+      <div id="chatbot-toggle">
+        <i class="fas fa-robot"></i>
+      </div>
+
+      <div id="chatbot-container" class="hidden">
+        <div id="chatbot-header">
+          <h3>Mentroid Assistant 🤖</h3>
+          <button id="chatbot-close">&times;</button>
+        </div>
+
+        <div id="chatbot-messages">
+          <div class="bot-message">👋 Hi there! I'm your Mentroid Assistant. How can I help you today?</div>
+          <div class="bot-message quick-replies">
+            <button onclick="chatReply('Tell me about services')">Services</button>
+            <button onclick="chatReply('Book a consultation')">Book</button>
+            <button onclick="chatReply('AI/ML Projects')">Projects</button>
+            <button onclick="chatReply('Feedback form')">Feedback</button>
+            <button onclick="chatReply('Social Links')">Socials</button>
+          </div>
+        </div>
+
+        <div id="chatbot-input-area">
+          <input type="text" id="chatbot-input" placeholder="Type your message..." />
+          <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
 
   </main>
 
@@ -310,8 +454,8 @@
     <div class="footer-container">
       <div class="footer-about">
         <img src="Images/logo1.png" alt="Mentroid Logo" class="footer-logo">
-        <p><strong>Mentroid</strong> is a leading provider of professional AI & ML services. We specialize in developing
-          intelligent systems that transform businesses, careers, and digital experiences.</p>
+        <p><strong>Mentroid</strong> empowers businesses and professionals with innovative AI and ML solutions, creating
+          intelligent systems that elevate performance and reshape digital interactions.</p>
         <div class="footer-socials">
           <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://www.instagram.com/mentroid_sol/" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -472,8 +616,18 @@
     const style = document.createElement('style');
     style.textContent = rippleCSS;
     document.head.appendChild(style);
+
+    lucide.createIcons();
+    document.querySelectorAll('.service-card').forEach(card => {
+      const iconName = card.getAttribute('data-icon');
+      const iconContainer = card.querySelector('.service-icon');
+      iconContainer.innerHTML = `<i data-lucide="${iconName}"></i>`;
+    });
+    lucide.createIcons();
   </script>
+
   <script src="script.js"></script>
+  <script src="chatbot.js"></script>
 </body>
 
 
