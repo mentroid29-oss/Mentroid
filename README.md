@@ -111,46 +111,5 @@ Live Demo: [https://mentroid.vercel.app/](https://mentroid.vercel.app/)
 
 ---
 
-## Tech Stack
-
-> (You can update this based on your implementation)
-
-- Frontend: React, Next.js, Tailwind CSS (or your chosen UI library)  
-- Backend / APIs: Node.js, Express / serverless functions  
-- ML / AI: Python, TensorFlow / PyTorch / scikit-learn  
-- Deployment / Hosting: Vercel (for front end), (your preferred backend host)  
-- Database & Storage: (Your choice e.g. MongoDB, PostgreSQL, S3, etc.)
-
----
-
-## Roadmap
-
-- [ ] Add user authentication & dashboard  
-- [ ] Client project management dashboard  
-- [ ] Real-time analytics & monitoring  
-- [ ] Expand services: voice bots, multi-language AI  
-- [ ] Mobile app integration  
-- [ ] SDK / API package for external use  
-
----
-
-## Contribution Guidelines
-
-1. Fork the repository  
-2. Create a feature branch — `git checkout -b feature/YourFeature`  
-3. Commit your changes — `git commit -m "Add your feature"`  
-4. Push to branch — `git push origin feature/YourFeature`  
-5. Open a Pull Request  
-
-Please ensure code is linted and tested. Include documentation / README updates for your changes.
-
----
-
-## License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
 **Thank you** for checking out Mentroid. Let’s build intelligent systems and grow together!  
 
