@@ -1,5 +1,6 @@
 // Configuration - UPDATE WITH YOUR EMAIL
 const BUSINESS_EMAIL = 'mentroid29@gmail.com'; // Change this to your email
+
 const BUSINESS_NAME = 'Mentroid'; // Change this to your business name
 // Booking functionality
 function handleBooking(serviceName = 'Consultation') {
@@ -99,12 +100,15 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
+
+
   form.style.display = 'none';
 
   const fields = {
     '_subject': `New ${data.service} Booking Request - ${data.name}`,
     '_template': 'table',
     '_captcha': 'false',
+    '_next': 'https://www.mentroid.co.in',
     'Name': data.name,
     'Email': data.email,
     'Phone': data.phone,
@@ -125,6 +129,7 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
 
   try {
     form.submit();
+    window.location.href = "https://www.mentroid.co.in";
     setTimeout(() => {
       showSuccessMessage(data);
       closeBookingModal();
@@ -595,12 +600,14 @@ function sendAITechViaFormSubmit(data, submitBtn, originalText) {
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
+
   form.style.display = 'none';
 
   const fields = {
     '_subject': `🤖 New ${data.service} Inquiry - ${data.name}`,
     '_template': 'table',
     '_captcha': 'false',
+    '_next': 'https://www.mentroid.co.in', // ✅ FormSubmit auto-redirects here
     'Category': 'AI / ML / IoT / Video Service or Training',
     'Name': data.name,
     'Email': data.email,
@@ -624,10 +631,11 @@ function sendAITechViaFormSubmit(data, submitBtn, originalText) {
   document.body.appendChild(form);
 
   try {
+    // ✅ Submit form (FormSubmit handles redirect using _next)
     form.submit();
 
+    // Smooth cleanup (optional)
     setTimeout(() => {
-      showAISuccessMessage(data);
       closeBookingModal();
       form.remove();
     }, 1000);
@@ -638,6 +646,7 @@ function sendAITechViaFormSubmit(data, submitBtn, originalText) {
     submitBtn.disabled = false;
   }
 }
+
 
 // Success Message for AI/ML Training or Service
 function showAISuccessMessage(data) {
@@ -850,6 +859,7 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
+
   form.style.display = 'none';
 
   // Add form fields
@@ -857,6 +867,7 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
     '_subject': `New ${data.service} Booking Request - ${data.name}`,
     '_template': 'table',
     '_captcha': 'false',
+    '_next': 'https://www.mentroid.co.in', // ✅ Instant redirect handled by FormSubmit
     'Name': data.name,
     'Email': data.email,
     'Phone': data.phone,
@@ -876,24 +887,25 @@ function sendViaFormSubmit(data, submitBtn, originalText) {
 
   document.body.appendChild(form);
 
-  // Submit form
+  // ✅ Submit and let FormSubmit redirect automatically
   try {
     form.submit();
 
-    // Show success after delay
+    // Optional: small delay for modal animation cleanup
     setTimeout(() => {
-      showSuccessMessage(data);
       closeBookingModal();
       form.remove();
     }, 1000);
   } catch (error) {
     console.error('Error sending form:', error);
-    // Fallback to mailto
+
+    // Fallback to mailto if something fails
     const emailSubject = `New ${data.service} Booking Request - ${data.name}`;
     const emailBody = createEmailBody(data);
     sendViaMailto(emailSubject, emailBody, data, submitBtn, originalText);
   }
 }
+
 
 // Method 2: Send via mailto (Opens default email client)
 function sendViaMailto(subject, body, data, submitBtn, originalText) {
@@ -1044,207 +1056,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Training Registration functionality
-function handleTraining(trainingType = 'Training Program') {
-  const modal = document.createElement('div');
-  modal.className = 'booking-modal';
-  modal.innerHTML = `
-    <div class="booking-modal-overlay" onclick="closeBookingModal()"></div>
-    <div class="booking-modal-content">
-      <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-      <h2 class="modal-title">🎓 Start ${trainingType}</h2>
-      <p class="modal-subtitle">Register for our training program and boost your skills</p>
-      
-      <form id="trainingForm" class="booking-form" onsubmit="submitTraining(event, '${trainingType}')">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingName">Full Name *</label>
-            <input type="text" id="trainingName" name="name" required placeholder="XYZ">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingEmail">Email *</label>
-            <input type="email" id="trainingEmail" name="email" required placeholder="xyz@gmail.com">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingPhone">Phone Number *</label>
-            <input type="tel" id="trainingPhone" name="phone" required placeholder="+91-9876543218">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingLevel">Experience Level *</label>
-            <select id="trainingLevel" name="level" required>
-              <option value="">Select level</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-              <option value="Professional">Professional</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingCourse">Training Course *</label>
-            <select id="trainingCourse" name="course" required>
-              <option value="">Select course</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile App Development">Mobile App Development</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Digital Marketing">Digital Marketing</option>
-              <option value="SEO & Analytics">SEO & Analytics</option>
-              <option value="Full Stack Development">Full Stack Development</option>
-              <option value="Custom Training">Custom Training</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingMode">Preferred Mode *</label>
-            <select id="trainingMode" name="mode" required>
-              <option value="">Select mode</option>
-              <option value="Online">Online</option>
-              <option value="In-Person">In-Person</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="trainingStartDate">Preferred Start Date *</label>
-            <input type="date" id="trainingStartDate" name="startDate" required min="${getTodayDate()}">
-          </div>
-          
-          <div class="form-group">
-            <label for="trainingDuration">Training Duration *</label>
-            <select id="trainingDuration" name="duration" required>
-              <option value="">Select duration</option>
-              <option value="1 Month">1 Month</option>
-              <option value="2 Months">2 Months</option>
-              <option value="3 Months">3 Months</option>
-              <option value="6 Months">6 Months</option>
-              <option value="Custom">Custom Duration</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="trainingGoals">Your Learning Goals & Expectations</label>
-          <textarea id="trainingGoals" name="goals" rows="4" placeholder="Tell us what you want to achieve from this training..."></textarea>
-        </div>
-        
-        <div class="form-actions">
-          <button type="button" class="btn-cancel" onclick="closeBookingModal()">Cancel</button>
-          <button type="submit" class="btn-submit">Register Now</button>
-        </div>
-      </form>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-  document.body.style.overflow = 'hidden';
-  setTimeout(() => modal.classList.add('active'), 10);
-}
-
-// Submit training registration
-function submitTraining(event, trainingType) {
-  event.preventDefault();
-
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
-
-  const submitBtn = form.querySelector('.btn-submit');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Submitting...';
-  submitBtn.disabled = true;
-
-  // Send via FormSubmit
-  sendTrainingViaFormSubmit(data, submitBtn, originalText);
-}
-
-// Send training registration via FormSubmit
-function sendTrainingViaFormSubmit(data, submitBtn, originalText) {
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
-  form.style.display = 'none';
-
-  const fields = {
-    '_subject': `🎓 New Training Registration - ${data.name}`,
-    '_template': 'table',
-    '_captcha': 'false',
-    'Registration Type': 'Training Program',
-    'Name': data.name,
-    'Email': data.email,
-    'Phone': data.phone,
-    'Experience Level': data.level,
-    'Training Course': data.course,
-    'Training Mode': data.mode,
-    'Preferred Start Date': formatDate(data.startDate),
-    'Training Duration': data.duration,
-    'Learning Goals': data.goals || 'No specific goals mentioned'
-  };
-
-  Object.entries(fields).forEach(([key, value]) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = value;
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-
-  try {
-    form.submit();
-
-    setTimeout(() => {
-      showTrainingSuccess(data);
-      closeBookingModal();
-      form.remove();
-    }, 1000);
-  } catch (error) {
-    console.error('Error sending form:', error);
-    alert('Failed to submit registration. Please try again.');
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }
-}
-
-// Show training success message
-function showTrainingSuccess(trainingData) {
-  const successModal = document.createElement('div');
-  successModal.className = 'booking-modal success-modal active';
-  successModal.innerHTML = `
-    <div class="booking-modal-overlay" onclick="closeSuccessModal()"></div>
-    <div class="booking-modal-content success-content">
-      <div class="success-icon">🎓</div>
-      <h2 class="success-title">Registration Successful!</h2>
-      <p class="success-message">
-        Congratulations, <strong>${trainingData.name}</strong>! You've successfully registered for 
-        <strong>${trainingData.course}</strong> training program.
-      </p>
-      <p class="success-submessage">
-        We'll send detailed course information and enrollment details to 
-        <strong>${trainingData.email}</strong> within 24 hours.
-      </p>
-      <div style="background: var(--bg-primary, #f9f9f9); padding: 1.5rem; border-radius: 15px; margin: 1.5rem 0;">
-        <p style="margin: 0.5rem 0; color: var(--text-secondary, #666); font-size: 0.95rem;">
-          📅 Start Date: <strong>${formatDate(trainingData.startDate)}</strong><br>
-          ⏱️ Duration: <strong>${trainingData.duration}</strong><br>
-          💻 Mode: <strong>${trainingData.mode}</strong>
-        </p>
-      </div>
-      <button class="btn-primary" onclick="closeSuccessModal()">Awesome!</button>
-    </div>
-  `;
-
-  document.body.appendChild(successModal);
-}
 
 // Custom Development Quote functionality
 function handleQuote(serviceType = 'Custom Development') {
@@ -1282,20 +1093,16 @@ function handleQuote(serviceType = 'Custom Development') {
           </div>
         </div>
         
+        
         <div class="form-group">
           <label for="quoteService">Service Type *</label>
           <select id="quoteService" name="service" required>
-            <option value="">Select service</option>
-            <option value="Custom Chatbot Development">Custom Chatbot Development</option>
-            <option value="ML Solution">ML Solution</option>
-            <option value="AI Integration">AI Integration</option>
-            <option value="Web Application">Web Application</option>
-            <option value="Mobile Application">Mobile Application</option>
-            <option value="API Development">API Development</option>
-            <option value="Database Design">Database Design</option>
-            <option value="Full Stack Solution">Full Stack Solution</option>
-            <option value="Other Custom Solution">Other Custom Solution</option>
-          </select>
+            <option value="AI Chatbot Development">AI Chatbot Development</option>
+              <option value="Machine Learning with IoT Integration">Machine Learning with IoT Integration</option>
+              <option value="AI Video Editing & Automation">AI Video Editing & Automation</option>
+              <option value="Deep Learning Model Training">Deep Learning Model Training</option>
+              <option value="Custom AI Solution / Consulting">Custom AI Solution / Consulting</option>
+            </select>
         </div>
         
         <div class="form-row">
@@ -1384,14 +1191,17 @@ function sendQuoteViaFormSubmit(data, submitBtn, originalText) {
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = `https://formsubmit.co/${BUSINESS_EMAIL}`;
+
   form.style.display = 'none';
 
   const urgentFlag = data.urgent === 'yes' ? '🔴 URGENT - ' : '';
 
+  // ✅ Include _next for instant redirect (no FormSubmit "Thanks" page)
   const fields = {
     '_subject': `${urgentFlag}💼 New Quote Request - ${data.name}`,
     '_template': 'table',
     '_captcha': 'false',
+    '_next': 'https://www.mentroid.co.in', // ✅ Redirect handled by FormSubmit
     'Request Type': 'Custom Development Quote',
     'Name': data.name,
     'Company': data.company || 'Not provided',
@@ -1417,10 +1227,11 @@ function sendQuoteViaFormSubmit(data, submitBtn, originalText) {
   document.body.appendChild(form);
 
   try {
+    // ✅ Submit handled by FormSubmit (redirects automatically via _next)
     form.submit();
 
+    // Smooth cleanup
     setTimeout(() => {
-      showQuoteSuccess(data);
       closeBookingModal();
       form.remove();
     }, 1000);
@@ -1431,6 +1242,7 @@ function sendQuoteViaFormSubmit(data, submitBtn, originalText) {
     submitBtn.disabled = false;
   }
 }
+
 
 // Show quote success message
 function showQuoteSuccess(quoteData) {
@@ -1500,4 +1312,15 @@ document.addEventListener('DOMContentLoaded', () => {
 // Inject styles into the document
 if (document.head) {
   document.head.insertAdjacentHTML('beforeend', modalStyles);
+}
+
+// Youtube 
+function openPlaylistModal(playlistId) {
+  document.getElementById('youtubePlaylist').src = 'https://www.youtube.com/embed/videoseries?list=' + playlistId + '&autoplay=1';
+  document.getElementById('playlistModal').style.display = 'flex';
+}
+
+function closePlaylistModal() {
+  document.getElementById('playlistModal').style.display = 'none';
+  document.getElementById('youtubePlaylist').src = '';
 }
