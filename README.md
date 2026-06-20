@@ -11,7 +11,6 @@ Live Demo: [Mentroid](www.mentroid.co.in)
 - [Features](#features)  
 - [Services Offered](#services-offered)  
 - [How It Works](#how-it-works)  
-- [Pricing](#pricing)  
 - [Team](#team)  
 - [Contact](#contact)  
 
@@ -79,31 +78,19 @@ Live Demo: [Mentroid](www.mentroid.co.in)
 
 ---
 
-## Pricing
-
-| Package                 | Price / Fee                         | Description |
-|--------------------------|-----------------------------------------|-------------|
-| **Consultation**        | ₹ 299                                  | Strategy & AI/ML guidance session |
-| **Training Program**     | ₹ 999 / month                          | Ongoing mentorship, hands-on ML projects |
-| **Custom Development**   | ₹ 299 – ₹ 25,000*                      | Tailored bespoke AI / ML / web solutions |
-
-\* Final cost depends on project complexity, effort, and domain.
-
----
 
 ## Team
 
 - **Om Roy** — CEO & Founder  
-- **Shubhangi Roy** — Social & Design Lead  
-- **Harshit Jaiswal** — Editor  
-- **Harsh Gupta** — IoT Lead  
+- **Shubhangi Roy** — CMO
+- **Harshit Jaiswal** — CTO & Co-Founder
 
 ---
 
 ## Contact
 
 - Location: Sehore, India  
-- Email: mentroid29@gmail.com  
+- Email: mentroid@mentroid.co.in 
 
 ---
 
