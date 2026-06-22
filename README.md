@@ -82,8 +82,8 @@ Live Demo: [Mentroid](www.mentroid.co.in)
 ## Team
 
 - **Om Roy** — CEO & Founder  
-- **Shubhangi Roy** — CMO
-- **Harshit Jaiswal** — CTO & Co-Founder
+- **Shubhangi Roy** — CTO & Co-Founder
+- **Harshit Jaiswal** — CMO
 
 ---
 
