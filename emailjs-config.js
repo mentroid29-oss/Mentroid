@@ -43,7 +43,7 @@ window.MENTROID_CONTACT = {
   toEmail: 'mentroid@mentroid.co.in',
 
   // ── Option B: Web3Forms ──────────────────────────────────────
-  web3formsAccessKey: '',   // e.g. 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+  web3formsAccessKey: '39c676b4-bf2a-4f0a-b829-c7f5a182df6a',   // e.g. 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
   // ── Option A: EmailJS ────────────────────────────────────────
   emailjs: {
