@@ -40,19 +40,16 @@
  */
 
 window.MENTROID_CONTACT = {
-  toEmail: 'mentroid@mentroid.co.in',
+  toEmail: 'mentroid29@gmail.com',
 
-  // ── Option B: Web3Forms ──────────────────────────────────────
-  web3formsAccessKey: '39c676b4-bf2a-4f0a-b829-c7f5a182df6a',   // e.g. 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+  web3formsAccessKey: '39c676b4-bf2a-4f0a-b829-c7f5a182df6a',
 
-  // ── Option A: EmailJS ────────────────────────────────────────
   emailjs: {
-    publicKey:             '',   // Account → Public Key
-    serviceId:             '',   // e.g. 'service_xxxxxxx'
-    adminTemplateId:       '',   // Template that sends to YOU
-    confirmationTemplateId:'',   // Template that sends to the USER (optional)
+    publicKey: '',
+    serviceId: '',
+    adminTemplateId: '',
+    confirmationTemplateId: '',
   },
 };
 
-/* ── Internal: keep backward-compat alias ── */
 window.MENTROID_EMAILJS = window.MENTROID_CONTACT;
